@@ -1,0 +1,14 @@
+/* your styles go here */
+#licencia_activa {
+	color: white;
+	background-color: #5CB85C;
+	width: 100%;
+	text-align: center;
+}
+
+#licencia_inactiva {
+	color: white;
+	background-color: #D9534F;
+	width: 100%;
+	text-align: center;
+}
