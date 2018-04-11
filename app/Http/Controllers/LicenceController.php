@@ -65,7 +65,7 @@ class LicenceController extends Controller
 
         $licence->save();
 
-        return back()->with ('notifications','La Licencia ha sido agregada con éxito');
+        return back()->with ('notification','La Licencia ha sido agregada con éxito');
     }
 
     
@@ -117,7 +117,7 @@ class LicenceController extends Controller
         $licence->message = $request->input('message');
         $licence->save();
 
-        return back()->with ('notifications','La Licencia ha sido agregada con éxito');
+        return back()->with ('notification','La Licencia ha sido actualizada con éxito');
     }
 
     /**
@@ -131,15 +131,6 @@ class LicenceController extends Controller
         $licence = Licence::find($id);
         $licence->delete();
         return back();
-    }
-
-    public function view($id)
-    {
-
-        $licence = Licence::find($id);
-        $terminals = Terminal::where('licence_id', $id)->get();
-
-        return view('licences.view')->with(compact('licence'))->with(compact('terminals'));
     }
 
 }

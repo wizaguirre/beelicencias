@@ -37,7 +37,7 @@ class SoftwareController extends Controller
         ];
 
         $messages = [
-            'name.required' => 'El nombre del cliente es obligatorio',
+            'name.required' => 'El nombre del Software es obligatorio',
             'name.string' => 'Debe de poner un nombre válido',
             'name.max' => 'El nombre excede el maximo permitido',
 
@@ -49,7 +49,7 @@ class SoftwareController extends Controller
         $software->name = $request->input('name');
         $software->save();
 
-        return back()->with ('notifications','El software ha sido agregado con éxito');
+        return back()->with ('notification','El software ha sido agregado con éxito');
     }
 
    
@@ -81,7 +81,7 @@ class SoftwareController extends Controller
         $software->name = $request->input('name');
         $software->save();
 
-        return back()->with ('notifications','El software ha sido actualizado con éxito');
+        return back()->with ('notification','El software ha sido actualizado con éxito');
     }
 
     /**

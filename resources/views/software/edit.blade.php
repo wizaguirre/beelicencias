@@ -52,7 +52,7 @@
 								{{ csrf_field() }} 
 								<div class="form-group">
 									<label class="form-control-label">Software</label>
-									<input class="form-control" type="text" name="name" value={{$software->name}}>
+									<input class="form-control" type="text" name="name" value="{{ $software->name }}">
 								</div>
 								<div class="form-group">
 									<input type="submit" value="Actualizar" class="btn btn-primary">

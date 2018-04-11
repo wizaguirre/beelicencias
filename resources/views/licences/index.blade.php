@@ -69,19 +69,19 @@
 								</div>
 								<div class="form-group">
 									<label class="form-control-label">Cantidad</label>
-									<input class="form-control" type="number" name="quantity">
+									<input class="form-control" type="number" name="quantity" value="{{ old('quantity') }}">
 								</div>
 								<div class="form-group">
 									<label class="form-control-label">Fecha Inicio</label>
-									<input class="form-control" type="date" name="started_date">
+									<input class="form-control" type="date" name="started_date" value="{{ old('started_date') }}">
 								</div>
 								<div class="form-group">
 									<label class="form-control-label">Fecha Fin</label>
-									<input class="form-control" type="date" name="due_date">
+									<input class="form-control" type="date" name="due_date" value="{{ old('due_date') }}">
 								</div>
 								<div class="form-group">
 									<label class="form-control-label">Mensaje</label>
-									<textarea class="form-control" rows="3" cols="10" name="message"></textarea>
+									<textarea class="form-control" rows="3" cols="10" name="message">{{ old('message') }}</textarea>
 								</div>
 								<div class="form-group">
 									<div>
@@ -148,7 +148,7 @@
 										@else
 											<td style="text-align: center;"><span class="badge badge-danger">Inactivo</span></td>
 										@endif
-										<td><a href="/licencia/{{$licence->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a> <a href="/licencia/{{$licence->id }}/eliminar" class="btn btn-sm btn-danger" title="Eliminar"><i class="fa fa-trash"></i></a> <a href="/licencia/{{$licence->id }}/ver" class="btn btn-sm btn-success" title="Ver"><i class="fa fa-eye"></i></a></td>
+										<td><a href="/licencia/{{$licence->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a> <a href="/licencia/{{$licence->id }}/eliminar" class="btn btn-sm btn-danger" title="Eliminar"><i class="fa fa-trash"></i></a> <a href="/licencia/{{$licence->id }}/terminales" class="btn btn-sm btn-success" title="Ver"><i class="fa fa-eye"></i></a></td>
 									</tr>
 									<?php $i++ ?>
 								@endforeach

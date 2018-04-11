@@ -50,7 +50,6 @@ Route::post('/clientes','CustomerController@store');
 Route::post('/cliente/{id}','CustomerController@update');
 Route::get('/cliente/{id}','CustomerController@edit');
 Route::get('/cliente/{id}/eliminar','CustomerController@destroy');
-Route::get('/cliente/{id}/ver','CustomerController@view');
 
 //SOFTWARE
 Route::get('/software','SoftwareController@index');
@@ -65,11 +64,11 @@ Route::post('/licencias','LicenceController@store');
 Route::post('/licencia/{id}','LicenceController@update');
 Route::get('/licencia/{id}','LicenceController@edit');
 Route::get('/licencia/{id}/eliminar','LicenceController@destroy');
-Route::get('/licencia/{id}/ver','LicenceController@view');
 
 //TERMINALES
-Route::get('/terminales','TerminalController@index');
-Route::post('/terminales','TerminalController@store');
+// Ruta que muestra las terminales por licencia
+Route::get('/licencia/{id}/terminales','TerminalController@index');
+Route::post('/licencia/{id}/terminales','TerminalController@store');
 Route::post('/terminal/{id}','TerminalController@update');
 Route::get('/terminal/{id}','TerminalController@edit');
 Route::get('/terminal/{id}/eliminar','TerminalController@destroy');

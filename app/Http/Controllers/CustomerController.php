@@ -35,10 +35,10 @@ class CustomerController extends Controller
     {
         //Creamos las reglas de validación
         $rules = [
-            'cedularuc' => 'required|string|max:255',
+            'cedularuc' => 'required|string|max:255|unique:customers,cedularuc',
             'name'=> 'required|string|max:255',
             'contact' => 'required|string|max:255',
-            'email' => 'required|email|max:50',
+            'email' => 'required|email|max:50|unique:customers,email',
             'phone' => 'required|digits:8'
 
         ];
@@ -47,6 +47,7 @@ class CustomerController extends Controller
             'cedularuc.required' => 'El RUC o cedula del cliente es obligatorio',
             'cedularuc.string' => 'El RUC o cedula del cliente debe ser válido',
             'cedularuc.max' => 'El RUC o cedula del cliente excede el maximo permitido',
+            'cedularuc.unique' => 'El RUC o cedula ya existe',
 
             'name.required' => 'El nombre del cliente es obligatorio',
             'name.string' => 'Debe de poner un nombre válido',
@@ -59,6 +60,7 @@ class CustomerController extends Controller
             'email.required' => 'El email del cliente es obligatorio',
             'email.email' => 'Debe de poner un email válido',
             'email.max' => 'El email excede el maximo permitido',
+            'email.unique' => 'El email ya existe',
 
             'phone.required' => 'El telefono del cliente es obligatorio',
             'phone.digits' => 'Debe de poner un teléfono válido'
@@ -76,7 +78,7 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        return back()->with ('notifications','El Cliente ha sido agregado con éxito');
+        return back()->with ('notification','El Cliente ha sido agregado con éxito');
 
     }
 
@@ -142,7 +144,7 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        return back()->with ('notifications','El Cliente ha sido modificado con éxito');  
+        return back()->with ('notification','El Cliente ha sido modificado con éxito');  
 
     }
 
@@ -158,13 +160,5 @@ class CustomerController extends Controller
         $customer->delete();
         return back();
     }
-
-    public function view($id)
-    {
-
-        $customer = Customer::find($id);
-
-        return view('customers.view')->with(compact('customer'));
-   }
 
 }

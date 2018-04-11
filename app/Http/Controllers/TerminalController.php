@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Terminal;
 use App\Customer;
+use App\Licence;
 
 
 class TerminalController extends Controller
@@ -23,40 +24,40 @@ class TerminalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-          //cargo en una variable todos los objetos(Registros)
-         $terminals = Terminal::all();
-         $customers = Customer::all();
-        //cargo la vista, con todos los objetos (customers)
-       return view('terminals.index')->with(compact('terminals'))->with(compact('customers'));
-    }
 
+    public function index($id)
+    {
+
+        $licence = Licence::find($id);
+        $terminals = Terminal::where('licence_id', $id)->get();
+
+        return view('terminals.index')->with(compact('licence'))->with(compact('terminals'));
+    }
 
     public function store(Request $request)
     {
-          //Creamos las reglas de validación
+        //Creamos las reglas de validación
         $rules = [
-            'customer_id'=> 'required',
-            'serial'=> 'required',
+            'licence_id'=> 'required',
             'name'=> 'required',
-            'lastAccess'=> 'required|string'
+            'key'=> 'required',
+            'lastAccess'=> 'required|date'
         ];
 
         $messages = [
-            'customer_id.required' => 'El cliente es obligatorio',
-            'serial.required' => 'La serie del equipo es obligatoria',
-            'name.required' => 'el Nombre de la terminal es obligatoria',
-            'lastAccess.required' => 'La fecha de último acceso es obligatoria',
-            'lastAccess.string' => 'La Fecha es inválida'
+            'licence_id.required' => 'La licencia es obligatoria',
+            'name.required' => 'El nombre de la terminal es obligatorio',
+            'key.required' => 'El keypara la terminal es obligatoria',
+            'lastAccess.required' => 'La fecha de último acceso debe ser válida.',
+            'lastAccess.date' => 'La Fecha es inválida'
         ];
 
        $this->validate($request, $rules, $messages);
 
         $terminal = new Terminal();
-        $terminal->customer_id = $request->input('customer_id');
-        $terminal->serial = $request->input('serial');
+        $terminal->licence_id = $request->input('licence_id');
         $terminal->name = $request->input('name');
+        $terminal->key = $request->input('key');
         $terminal->lastAccess = $request->input('lastAccess');
         $terminal->save();
 

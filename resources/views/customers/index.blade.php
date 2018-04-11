@@ -63,7 +63,7 @@
 								</div>
 								<div class="form-group">
 									<label class="form-control-label">Correo</label>
-									<input class="form-control" type="text" name="email">
+									<input class="form-control" type="email" name="email">
 								</div>
 								<div class="form-group">
 									<label class="form-control-label">Teléfono</label>
@@ -113,7 +113,7 @@
 										<td>{{ $customer->contact}}</td>
 										<td>{{ $customer->email}}</td>
 										<td>{{ $customer->phone}}</td>
-										<td><a href="/cliente/{{$customer->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a> <a href="/cliente/{{$customer->id }}/eliminar" class="btn btn-sm btn-danger" title="Eliminar"><i class="fa fa-trash"></i></a><a href="/cliente/{{$customer->id }}/ver" class="btn btn-sm btn-success" title="Ver"><i class="fa fa-eye"></i></a></td>
+										<td><a href="/cliente/{{$customer->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a> <a href="/cliente/{{$customer->id }}/eliminar" class="btn btn-sm btn-danger" title="Eliminar"><i class="fa fa-trash"></i></a></td>
 									</tr>
 									<?php $i++ ?>
 									@endforeach

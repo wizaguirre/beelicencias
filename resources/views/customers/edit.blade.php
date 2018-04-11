@@ -51,23 +51,23 @@
 								{{ csrf_field() }}
 								<div class="form-group">
 									<label class="form-control-label">RUC / Cédula</label>
-									<input class="form-control" type="text" name="cedularuc" value={{$customer->cedularuc}}>
+									<input class="form-control" type="text" name="cedularuc" value="{{$customer->cedularuc}}">
 								</div>
 								<div class="form-group">
 									<label class="form-control-label">Nombre</label>
-									<input class="form-control" type="text" name="name" value={{$customer->name}}>
+									<input class="form-control" type="text" name="name" value="{{$customer->name}}">
 								</div>
 								<div class="form-group">
 									<label class="form-control-label">Contacto</label>
-									<input class="form-control" type="text" name="contact" value={{$customer->contact}}>
+									<input class="form-control" type="text" name="contact" value="{{$customer->contact}}">
 								</div>
 								<div class="form-group">
 									<label class="form-control-label">Correo</label>
-									<input class="form-control" type="text" name="email" value={{$customer->email}}>
+									<input class="form-control" type="text" name="email" value="{{$customer->email}}">
 								</div>
 								<div class="form-group">
 									<label class="form-control-label">Teléfono</label>
-									<input class="form-control" type="text" name="phone" value={{$customer->phone}}>
+									<input class="form-control" type="text" name="phone" value="{{$customer->phone}}">
 								</div>
 								<div class="form-group">
 									<input type="submit" value="Actualizar" class="btn btn-primary">
