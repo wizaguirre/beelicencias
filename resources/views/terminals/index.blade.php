@@ -2,18 +2,26 @@
 
 @section('content')
 
-	@if(session('notification'))
-		{{ session('notification')}}
-	@endif
-
-	@if(count($errors)>0)
-		@foreach($errors->all()  as $error)
-			{{$error}} <br>
-		@endforeach
-	@endif
 <div class="content-inner">
 	<header class="page-header">
 		<div class="container-fluid">
+		    <div class="panel-body">
+              @if (session('notification'))
+                <div class="alert alert-success">
+                  {{ session('notification') }}
+                </div>
+              @endif
+
+            @if (count($errors) > 0 )
+              <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+              </div>
+            @endif
+            </div>		
 			<h2 class="no-marging-bottom">
 				Terminales
 			</h2>

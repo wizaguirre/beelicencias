@@ -40,7 +40,7 @@
                     <div class="card-close">
                       <div class="dropdown">
                         <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Cerrar</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Editar</a></div>
+                        <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Cerrar</a></div>
                       </div>
                     </div>
                     <div class="card-header d-flex align-items-center">
@@ -78,7 +78,7 @@
                     <div class="card-close">
                       <div class="dropdown">
                         <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Cerrar</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Editar</a></div>
+                        <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Cerrar</a></div>
                       </div>
                     </div>
                     <div class="card-header d-flex align-items-center">
@@ -97,28 +97,28 @@
                         <tbody>
                           <?php $i =1 ?>
                           @foreach($users as $user)
-                          <tr>
-                            <th scope="row">{{ $i }}</th>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>
-                                <a href="/usuario/{{ $user->id }}" class="btn btn-sm btn-primary" title="Editar">
-                                  <i class="fa fa-pencil"></i>
-                                </a>
-                                <a href="/usuario/{{ $user->id }}/eliminar" class="btn btn-sm btn-danger" title="Eliminar">
-                                  <i class="fa fa-trash"></i>
-                                </a>                                
-                            </td>
-                          </tr>
-                          <?php $i++ ?>
-                        @endforeach                        
+                            <tr>
+                              <th scope="row">{{ $i }}</th>
+                              <td>{{ $user->name }}</td>
+                              <td>{{ $user->email }}</td>
+                              <td>
+                                  <a href="/usuario/{{ $user->id }}" class="btn btn-sm btn-primary" title="Editar">
+                                    <i class="fa fa-pencil"></i>
+                                  </a>
+                                  <a href="/usuario/{{ $user->id }}/eliminar" class="btn btn-sm btn-danger" title="Eliminar">
+                                    <i class="fa fa-trash"></i>
+                                  </a>                                
+                              </td>
+                            </tr>
+                            <?php $i++ ?>
+                          @endforeach                        
                         </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
-          </section>                    
+          </section>   
+        </div>                 
 @endsection
