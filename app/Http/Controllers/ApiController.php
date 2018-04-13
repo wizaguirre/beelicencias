@@ -15,19 +15,51 @@ class ApiController extends Controller
         return Customer::all();
     }
 
-    public function show($id)
+    public function show($cedularuc)
     {
-        return Customer::find($id);
+        $customer = Customer::where('cedularuc', $cedularuc)->get();
+
+        if(!$customer->isEmpty()) {
+            return $customer;
+        } else {
+            return response()->json([
+            'Status' => 'Error',
+            'Mensaje' => 'El registro no existe',
+            'Codigo' => 404
+            ], 404);
+        }
+        
     }
 
     public function licenceShow($customer_id, $software_id){
 
-        return Licence::where('customer_id', $customer_id)->where('software_id', $software_id)->get();
+        $licence = Licence::where('customer_id', $customer_id)->where('software_id', $software_id)->get();
+
+        if (!$licence->isEmpty()) {
+            return $licence;
+        } else {
+            return response()->json([
+            'Status' => 'Error',
+            'Mensaje' => 'El registro no existe',
+            'Codigo' => 404
+            ], 404);
+        }
+         
     }
 
     public function showTerminalsbyLicence($licence_id)
     {
-        return Terminal::where('licence_id', $licence_id)->get();
+        $terminal = Terminal::where('licence_id', $licence_id)->get();
+
+        if(!$terminal->isEmpty()){
+            return $terminal;
+        } else {
+            return response()->json([
+            'Status' => 'Error',
+            'Mensaje' => 'El registro no existe',
+            'Codigo' => 404
+            ], 404);
+        } 
     }
 
     public function addTerminal(Request $request)
@@ -42,7 +74,8 @@ class ApiController extends Controller
 
         return response()->json([
             'Status' => 'OK',
-            'Mensaje' => 'Registro guardado con éxito'
+            'Mensaje' => 'Registro guardado con éxito',
+            'Codigo' => 200
         ], 200);
     }
 

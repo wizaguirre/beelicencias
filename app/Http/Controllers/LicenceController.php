@@ -34,10 +34,10 @@ class LicenceController extends Controller
         $rules = [
             'customer_id' => 'required',
             'software_id' => 'required',
-            'quantity' => 'required',
-            'quantity' => 'numeric',
-            'started_date'=> 'date',
-            'due_date'=> 'date',
+            'quantity' => 'required|numeric',
+            'started_date'=> 'required|date',
+            'due_date'=> 'required|date',
+            'message' => 'nullable',
             'status' => 'boolean'
         ];
 

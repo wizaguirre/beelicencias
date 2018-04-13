@@ -19,7 +19,7 @@ class CreateLicencesTable extends Migration
             $table->date('due_date');
             $table->boolean('status');
             $table->integer('quantity');
-            $table->string('message');
+            $table->string('message')->nullable();
 
             $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('customers');

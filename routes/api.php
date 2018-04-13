@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('clientes', 'ApiController@index');
-Route::get('cliente/{id}', 'ApiController@show');
+Route::get('cliente/{cedularuc}', 'ApiController@show');
 Route::get('licencia/cliente/{customer_id}/software/{software_id}', 'ApiController@licenceShow');
 Route::get('terminales/{id}', 'ApiController@showTerminalsbyLicence');
 Route::post('terminales/', 'ApiController@addTerminal');
