@@ -46,15 +46,15 @@
                             </div>
                         </div>
                         <div class="card-header d-flex align-items-center">
-                          <h3 class="h4">Agregar Terminal</h3>
+                          <h3 class="h4">Editar Terminal</h3>
                         </div>
                         <div class="card-body">
                             <form action="" method="POST">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label class="form-control-label">Licencia</label>
-                                    <input type="hidden" name="licence_id" value={{$licence->id}}>
-                                    <input class="form-control" type="text" value="{{$licence->customer->name}} - {{$licence->software->name}}" disabled>
+                                    <input type="hidden" name="licence_id" value="{{ $licence->id }}">
+                                    <input class="form-control" type="text" value="{{ $licence->customer->name }} - {{ $licence->software->name }}" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label">Nombre</label>
@@ -67,7 +67,7 @@
 
                                 <div class="form-group">
                                     <label class="form-control-label">Último Acceso</label>
-                                    <input class="form-control" type="date" name="lastAccess" value="{{ old('lastAccess') }}">
+                                    <input class="form-control" type="date" name="lastAccess" value="{{ $terminal->lastAccess }}">
                                 </div>
 
                                 <div class="form-group">

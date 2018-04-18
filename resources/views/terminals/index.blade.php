@@ -53,7 +53,7 @@
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label class="form-control-label">Licencia</label>
-                                    <input type="hidden" name="licence_id" value={{$licence->id}}>
+                                    <input type="hidden" name="licence_id" value={{ $licence->id }}>
                                     <input class="form-control" type="text" value="{{$licence->customer->name}} - {{$licence->software->name}}" disabled>
                                 </div>
                                 <div class="form-group">

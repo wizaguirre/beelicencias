@@ -73,12 +73,12 @@ class TerminalController extends Controller
      */
     public function edit($id)
     {
-          //cargo en una variable todos los objetos(Registros)
         $terminal = Terminal::find($id);
-        $customers = Customer::all();
 
-        //cargo la vista, con todos los objetos (customers)
-       return view('terminals.edit')->with(compact('terminal'))->with(compact('customers'));
+        // Busca y regresa el objeto licencia que corresponda a la Terminal
+        $licence = Licence::find($terminal->licence_id);
+
+       return view('terminals.edit')->with(compact('terminal'))->with(compact('licence'));
     }
 
    
@@ -86,26 +86,26 @@ class TerminalController extends Controller
     {
           //Creamos las reglas de validación
         $rules = [
-            'customer_id'=> 'required',
-            'serial'=> 'required',
+            'licence_id'=> 'required',
             'name'=> 'required',
-            'lastAccess'=> 'required|string'
+            'key'=> 'required',
+            'lastAccess'=> 'required|date'
         ];
 
         $messages = [
-            'customer_id.required' => 'El cliente es obligatorio',
-            'serial.required' => 'La serie del equipo es obligatoria',
-            'name.required' => 'el Nombre de la terminal es obligatoria',
-            'lastAccess.required' => 'La fecha de último acceso es obligatoria',
-            'lastAccess.string' => 'La Fecha es inválida'
+            'licence_id.required' => 'La licencia es obligatoria',
+            'name.required' => 'El nombre de la terminal es obligatorio',
+            'key.required' => 'El keypara la terminal es obligatoria',
+            'lastAccess.required' => 'La fecha de último acceso debe ser válida.',
+            'lastAccess.date' => 'La Fecha es inválida'
         ];
 
        $this->validate($request, $rules, $messages);
 
         $terminal = Terminal::find($id);       
-        $terminal->customer_id = $request->input('customer_id');
-        $terminal->serial = $request->input('serial');
+        $terminal->licence_id = $request->input('licence_id');
         $terminal->name = $request->input('name');
+        $terminal->key = $request->input('key');
         $terminal->lastAccess = $request->input('lastAccess');
         $terminal->save();
 

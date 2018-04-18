@@ -36,6 +36,22 @@ Route::get('/dashboard', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Enviar notificaciones por correo
+Route::get('email', function(){
+
+	$data = array(
+		'name' => 'Constructora Meco, S.A.'
+	);
+
+	Mail::send('emails.licence', $data, function($message){
+		$message->from('licencias@beesys.net', 'Servicio de licenciamiento Bee');
+		$message->to('wizaguirrel@gmail.com')->subject('Nueva licencia');
+	});
+
+	return 'El email se ha enviado correctamente.';
+
+});
+
 
 //USUARIOS
 Route::get('/usuarios', 'UserController@index');
@@ -72,3 +88,4 @@ Route::post('/licencia/{id}/terminales','TerminalController@store');
 Route::post('/terminal/{id}','TerminalController@update');
 Route::get('/terminal/{id}','TerminalController@edit');
 Route::get('/terminal/{id}/eliminar','TerminalController@destroy');
+

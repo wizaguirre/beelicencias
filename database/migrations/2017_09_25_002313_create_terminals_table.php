@@ -17,7 +17,7 @@ class CreateTerminalsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('key');
-            $table->datetime('lastAccess');
+            $table->date('lastAccess');
 
             $table->integer('licence_id')->unsigned();
             $table->foreign('licence_id')->references('id')->on('licences');
