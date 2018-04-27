@@ -14,6 +14,7 @@ class CreateLicencesTable extends Migration
     public function up()
     {
         Schema::create('licences', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->date('started_date');
             $table->date('due_date');
@@ -26,7 +27,6 @@ class CreateLicencesTable extends Migration
 
             $table->integer('software_id')->unsigned();
             $table->foreign('software_id')->references('id')->on('software');
-            $table->softDeletes(); 
             $table->timestamps();
         });
     }

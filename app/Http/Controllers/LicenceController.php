@@ -10,10 +10,10 @@ use App\Terminal;
 
 class LicenceController extends Controller
 {
-     //funcion que valida si el usuario está logeado
+
     public function __construct()
     {
-        //Validación del Contructor: Verificar si el usuario está logeado
+
         $this->middleware('auth');
     }
 
@@ -71,12 +71,11 @@ class LicenceController extends Controller
     
     public function edit($id)
     {
-          //cargo en una variable todos los objetos(Registros)
+
         $licences = Licence::find($id);
         $software = Software::all();
         $customers = Customer::all();
 
-        //cargo la vista, con todos los objetos (customers)
        return view('licences.edit')->with(compact('software'))->with(compact('customers'))->with(compact('licences'));  
     }
 
@@ -106,7 +105,6 @@ class LicenceController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-
         $licence =  Licence::find($id);
         $licence->customer_id = $request->input('customer_id');
         $licence->software_id = $request->input('software_id');
@@ -128,9 +126,16 @@ class LicenceController extends Controller
      */
     public function destroy($id)
     {
-        $licence = Licence::find($id);
-        $licence->delete();
-        return back();
+        // Permite validar si hay registros relacionados, no poder eliminar el padre.
+        // OJO: No deberá estar activada la funcion de Softdelete en las migraciones, ni modelos.
+        try {
+                Licence::findOrFail($id)->delete(); 
+                return back();
+        } catch(\Illuminate\Database\QueryException $e) {
+            $error = "No se puede eliminar este registro porque tiene otros registros relacionados.";
+            return back()->withErrors($error);                
+        }
+
     }
 
 }

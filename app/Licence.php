@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Licence extends Model
 {
-    use SoftDeletes;
 
     protected $fillable = [
 		'started_date',

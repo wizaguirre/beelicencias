@@ -12,17 +12,12 @@ use App\Terminal;
 
 class CustomerController extends Controller
 {
-    //funcion que valida si el usuario está logeado
-    public function __construct()
-    {
-        //Validación del Contructor: Verificar si el usuario está logeado
+
+    public function __construct(){
+       
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //cargo en una variable todos los objetos(Registros)
@@ -82,23 +77,13 @@ class CustomerController extends Controller
 
     }
 
-    
     public function edit($id)
     {
-        //cargo en una variable todos los objetos(Registros)
+
         $customer = Customer::find($id);
-        //cargo la vista, con todos los objetos (customers)
+        return view('customers.edit')->with(compact('customer')); 
+    }
 
-       return view('customers.edit')->with(compact('customer')); 
-   }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //Creamos las reglas de validación
@@ -148,17 +133,17 @@ class CustomerController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        $customer = Customer::find($id);
-        $customer->delete();
-        return back();
+        // Permite validar si hay registros relacionados, no poder eliminar el padre.
+        // OJO: No deberá estar activada la funcion de Softdelete en las migraciones, ni modelos.       
+       try {
+                Customer::findOrFail($id)->delete(); 
+                return back();
+        } catch(\Illuminate\Database\QueryException $e) {
+            $error = "No se puede eliminar este registro porque tiene otros registros relacionados.";
+            return back()->withErrors($error);                
+        }
     }
 
 }

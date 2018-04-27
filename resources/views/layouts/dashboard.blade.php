@@ -32,13 +32,6 @@
       <!-- Main Navbar-->
       <header class="header">
         <nav class="navbar">
-          <!-- Search Box-->
-          <div class="search-box">
-            <button class="dismiss"><i class="icon-close"></i></button>
-            <form id="searchForm" action="#" role="search">
-              <input type="search" placeholder="What are you looking for..." class="form-control">
-            </form>
-          </div>
           <div class="container-fluid">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
               <!-- Navbar Header-->
@@ -165,13 +158,7 @@
     </div>
     <!-- Javascript files-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="/js/tether.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.cookie.js"> </script>
-    <script src="/js/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script src="/js/charts-home.js"></script>
-    <script src="/js/front.js"></script>
     @yield('footer')
   </body>
 </html>        

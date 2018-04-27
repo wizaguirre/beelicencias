@@ -14,13 +14,13 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('cedularuc');
              $table->string('name');
              $table->string('contact');
              $table->string('email');
              $table->string('phone');
-            $table->softDeletes(); 
             $table->timestamps();
         });
     }

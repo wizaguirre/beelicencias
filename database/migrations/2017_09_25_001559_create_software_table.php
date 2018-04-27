@@ -14,9 +14,9 @@ class CreateSoftwareTable extends Migration
     public function up()
     {
         Schema::create('software', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
-            $table->softDeletes(); 
             $table->timestamps();
         });
     }

@@ -120,8 +120,14 @@ class TerminalController extends Controller
      */
     public function destroy($id)
     {
-        $terminal = Terminal::find($id);
-        $terminal->delete();
-        return back();
+        // Permite validar si hay registros relacionados, no poder eliminar el padre.
+        // OJO: No deberá estar activada la funcion de Softdelete en las migraciones, ni modelos.
+        try {
+                Terminal::findOrFail($id)->delete(); 
+                return back();
+        } catch(\Illuminate\Database\QueryException $e) {
+            $error = "No se puede eliminar este registro porque tiene otros registros relacionados.";
+            return back()->withErrors($error);                
+        }       
     }
 }

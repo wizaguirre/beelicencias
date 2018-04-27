@@ -28,6 +28,7 @@
 
             @if (count($errors) > 0 )
               <div class="alert alert-danger">
+                <h2>¡Ha ocurrido un error!</h2>
                 <ul>
                     @foreach ($errors->all() as $error)
                       <li>{{ $error }}</li>
@@ -92,15 +93,15 @@
                             <h3 class="h4">Listado de Terminales</h3>
                         </div>                          
                         <div class="card-body">
-                            <table class="table">
+                            <table class="table" id="datatable">
                                 <thead>
-                                <tr>
-                                    <th>Item</th>
-                                    <th>Nombre</th>
-                                    <th>Key</th>
-                                    <th>Último Acceso</th>
-                                    <th>Acciones</th>
-                                </tr>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Nombre</th>
+                                        <th>Key</th>
+                                        <th>Último Acceso</th>
+                                        <th>Acciones</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                 <?php $i = 1?>
@@ -110,7 +111,7 @@
                                         <td>{{ $terminal->name}}</td>
                                         <td>{{ $terminal->key}}</td>
                                         <td>{{ $terminal->lastAccess}}</td>
-                                        <td><a href="/terminal/{{$terminal->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a> <a href="/terminal/{{$terminal->id }}/eliminar" class="btn btn-sm btn-danger" title="Eliminar"><i class="fa fa-trash"></i></a> </td>
+                                        <td><a href="/terminal/{{$terminal->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a> <a href="/terminal/{{$terminal->id }}/eliminar" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar este registro?')" title="Eliminar"><i class="fa fa-trash"></i></a> </td>
                                     </tr>
                                     <?php $i++ ?>
                                 @endforeach
@@ -122,4 +123,8 @@
             </div>
         </section>
     </div>
+@endsection
+@section('footer')
+<script src='https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
+<script  src="/js/datatable_custom.js"></script>
 @endsection

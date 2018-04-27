@@ -14,6 +14,7 @@ class CreateTerminalsTable extends Migration
     public function up()
     {
         Schema::create('terminals', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
             $table->string('key');
@@ -22,7 +23,6 @@ class CreateTerminalsTable extends Migration
             $table->integer('licence_id')->unsigned();
             $table->foreign('licence_id')->references('id')->on('licences');
 
-            $table->softDeletes(); 
             $table->timestamps();
         });
     }

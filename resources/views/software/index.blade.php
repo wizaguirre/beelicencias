@@ -27,6 +27,7 @@
 
             @if (count($errors) > 0 )
               <div class="alert alert-danger">
+              <h2>¡Ha ocurrido un error!</h2>
                 <ul>
                     @foreach ($errors->all() as $error)
                       <li>{{ $error }}</li>
@@ -76,7 +77,7 @@
 		                    <h3 class="h4">Listado de Software</h3>
 		                </div>							
 						<div class="card-body">
-							<table class="table">
+							<table class="table" id="datatable">
 								<thead>
 									<tr>
 										<th>Item</th>
@@ -90,7 +91,7 @@
 									<tr>
 										<td>{{$i}}</td>
 										<td>{{ $softwareitem->name}}</td>
-										<td><a href="/software/{{$softwareitem->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a> <a href="/software/{{$softwareitem->id }}/eliminar" class="btn btn-sm btn-danger" title="Eliminar"><i class="fa fa-trash"></i></a> </td>
+										<td><a href="/software/{{$softwareitem->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a> <a href="/software/{{$softwareitem->id }}/eliminar" onclick="return confirm('¿Está seguro de eliminar este registro?')" class="btn btn-sm btn-danger" title="Eliminar"><i class="fa fa-trash"></i></a></td>
 									</tr>
 									<?php $i++ ?>
 									@endforeach
@@ -102,4 +103,8 @@
 			</div>
 		</section>
 	</div>
+@endsection
+@section('footer')
+<script src='https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js'></script>
+<script  src="/js/datatable_custom.js"></script>
 @endsection
