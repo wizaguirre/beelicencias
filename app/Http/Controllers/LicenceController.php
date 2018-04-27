@@ -65,6 +65,20 @@ class LicenceController extends Controller
 
         $licence->save();
 
+        $data = array(
+        'customer' => $licence->customer->name,
+        'software' => $licence->software->name,
+        'quantity' => $licence->quantity,
+        'started_date' => $licence->started_date,
+        'due_date' => $licence->due_date
+
+        );
+
+        \Mail::send('emails.licence', $data, function($message){
+            $message->from('licencias@beesys.net', 'Servicio de licenciamiento Bee');
+            $message->to('wizaguirrel@gmail.com', 'alejandra.romero@beesys.net', 'ramses.rivas@gmail.com')->subject('Nueva licencia creada');
+        });
+
         return back()->with ('notification','La Licencia ha sido agregada con éxito');
     }
 
