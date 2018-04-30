@@ -93,7 +93,8 @@
                             <h3 class="h4">Listado de Terminales</h3>
                         </div>                          
                         <div class="card-body">
-                            <table class="table" id="datatable">
+                        <div class="table-responsive">
+                            <table id="datatable" class="table dt-responsive display nowrap">
                                 <thead>
                                     <tr>
                                         <th>Item</th>
@@ -117,6 +118,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                        </div>
                         </div>
                     </div>
                 </div>
