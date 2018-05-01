@@ -30,9 +30,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 // Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('/dashboard', function () {
-    return view('/dashboard');
-})->middleware('auth');
+Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
