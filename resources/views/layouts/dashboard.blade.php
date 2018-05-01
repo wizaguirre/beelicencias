@@ -147,7 +147,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-6">
-              <p>B@ckend &copy; 2017</p>
+            <p>B@ckend &copy; <?php echo date('Y');?></p>
             </div>
             <div class="col-sm-6 text-right">
               <p>Powered by <a href="#" class="external"><strong>Solides</strong></a></p>
