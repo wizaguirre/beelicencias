@@ -44,6 +44,8 @@ class UserController extends Controller
     		'email.unique' => 'El Email ingresado ya se encuentra en uso.',
     		'password.required' => 'La contraseña es obligatorio.',
     		'password.min' => 'La contraseña debe ser almenos de 6 caracteres.',
+            'avatar.image' => 'Los formatos de imágen para el perfil son: JPG, PNG, JPEG, GIF y SVG.',
+            'avatar.max' => 'El archivo de imágen de perfil excede los 2MB permitidos.'
     	];
 
     	$this->validate($request, $rules, $messages);
@@ -76,25 +78,50 @@ class UserController extends Controller
         $rules = [
             'name' => 'required|string|max:255',           
             'password' => 'nullable|min:6',
+            'avatar' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',   
         ];
         $messages = [
             'name.required' => 'El nombre del usuario es obligatorio.',
             'name.max' =>'El nombre de usuario es demasiado largo.',
             'name.string' => 'El nombre solo acepta caracteres alfabeticos.',         
-            'password.min' => 'La contraseña debe ser almenos de 6 caracteres.',         
+            'password.min' => 'La contraseña debe ser almenos de 6 caracteres.',
+            'avatar.image' => 'Los formatos de imágen para el perfil son: JPG, PNG, JPEG, GIF y SVG.',
+            'avatar.max' => 'El archivo de imágen de perfil excede los 2MB permitidos.'
+
         ];
+
         $this->validate($request, $rules, $messages);
+
         $user = User::find($id);
         $user->name = $request->input('name');
         $password = $request->input('password');
         if($password)
             $user->password = bcrypt($password);
+
+        // Si existe una imágen de avatar
+        if(!$request->avatar == null){
+            // El nombre del archivo será: El ID del usuario que lo crea, más el tiempo en ms y su extensión
+            $filename = Auth::id().'_'.time().'.'.$request->avatar->getClientOriginalExtension();
+            
+            // Se guarda el archivo con el nombre compuesto en la carpeta pública
+            $request->avatar->move(public_path('/uploads/avatars'), $filename);
+            $user->avatar = 'uploads/avatars/'.$filename;
+        }
+
         $user->save();
         return back()->with('notification', 'El usuario ha sido modificado con éxito.');
     }
     public function delete($id){
-        $user = User::find($id);
-        $user->delete();
-        return back()->with('notification', 'El usuario ha sido eliminado con éxito.');
+
+        // Permite validar si hay registros relacionados, no poder eliminar el padre.
+        // OJO: No deberá estar activada la funcion de Softdelete en las migraciones, ni modelos.
+        try {
+                User::findOrFail($id)->delete(); 
+                return back()->with('notification', 'El usuario ha sido eliminado con éxito.');
+        } catch(\Illuminate\Database\QueryException $e) {
+            $error = "No se puede eliminar este registro porque tiene otros registros relacionados.";
+            return back()->withErrors($error);                
+        }  
+
     }
 }

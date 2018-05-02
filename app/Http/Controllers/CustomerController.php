@@ -139,7 +139,7 @@ class CustomerController extends Controller
         // OJO: No deberá estar activada la funcion de Softdelete en las migraciones, ni modelos.       
        try {
                 Customer::findOrFail($id)->delete(); 
-                return back();
+                return back()->with('notification', 'El cliente ha sido eliminado con éxito.');
         } catch(\Illuminate\Database\QueryException $e) {
             $error = "No se puede eliminar este registro porque tiene otros registros relacionados.";
             return back()->withErrors($error);                
