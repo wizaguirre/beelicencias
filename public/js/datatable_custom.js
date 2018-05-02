@@ -10,6 +10,9 @@ $(document).ready(function() {
       "sSearch": "",
       "sSearchPlaceholder": "Buscar",
       "sInfo": "_START_ -_END_ de _TOTAL_",
+      "zeroRecords": "No se encontraron los resultados.",
+      "infoEmpty": "No hay datos disponibles",
+      "emptyTable": "No hay datos disponibles en la tabla",
       "sLengthMenu": '<span>Mostrar: </span><select class="browser-default">' +
         '<option value="10">10</option>' +
         '<option value="20">20</option>' +

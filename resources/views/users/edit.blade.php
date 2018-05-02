@@ -67,6 +67,11 @@
                           <input type="text" name="password" placeholder="Contraseña" class="form-control" >
                           <small class="form-text">* Digitar en caso de querer cambiar</small>
                         </div>
+
+                        <div class="form-group">       
+                          <label class="form-control-label">Imágen de perfil</label>
+                          <input type="file" name="avatar" class="form-control" >
+                        </div> 
                                             
                         <div class="form-group">       
                           <input type="submit" value="Actualizar" class="btn btn-primary">

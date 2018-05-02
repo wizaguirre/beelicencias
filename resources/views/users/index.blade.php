@@ -48,7 +48,7 @@
                       <h3 class="h4">Agregar Usuario</h3>
                     </div>
                     <div class="card-body">
-                      <form action="" method="POST">
+                      <form action="" method="POST" enctype="multipart/form-data">
                       {{ csrf_field() }}
                         <div class="form-group">
                           <label class="form-control-label">Nombre</label>
@@ -63,6 +63,11 @@
                           <label class="form-control-label">Contraseña</label>
                           <input type="text" name="password" placeholder="Contraseña" class="form-control" value="{{ old('password', str_random(8)) }}">
                         </div>
+
+                        <div class="form-group">       
+                          <label class="form-control-label">Imágen de perfil</label>
+                          <input type="file" name="avatar" class="form-control" >
+                        </div>                        
 
                         <div class="form-group">       
                           <input type="submit" value="Guardar" class="btn btn-primary">

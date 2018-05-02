@@ -15,6 +15,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Walter Izaguirre',
             'email' => 'wizaguirrel@gmail.com',
             'password' => bcrypt('123456'),
+            'avatar' => '/uploads/avatars/default_avatar.jpg'
         ]);
     }
 }
