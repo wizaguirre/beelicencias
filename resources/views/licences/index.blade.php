@@ -150,7 +150,11 @@
 										@else
 											<td style="text-align: center;"><span class="badge badge-danger">Inactivo</span></td>
 										@endif
-										<td><a href="/licencia/{{$licence->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a> <a href="/licencia/{{$licence->id }}/eliminar" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar este registro?')" title="Eliminar"><i class="fa fa-trash"></i></a> <a href="/licencia/{{$licence->id }}/terminales" class="btn btn-sm btn-success" title="Ver"><i class="fa fa-eye"></i></a></td>
+										<td>
+											<a href="/licencia/{{$licence->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a>
+											<a href="#" data-href="/licencia/{{$licence->id }}/eliminar" data-nombre="{{ $licence->customer->name }}"  data-toggle="modal" data-target="#confirm-delete" class="btn btn-sm btn-danger confirmar_eliminacion" title="Eliminar"><i class="fa fa-trash"></i></a>
+											<a href="/licencia/{{$licence->id }}/terminales" class="btn btn-sm btn-success" title="Ver"><i class="fa fa-eye"></i></a>
+										</td>
 									</tr>
 									<?php $i++ ?>
 								@endforeach

@@ -92,7 +92,10 @@
 									<tr>
 										<td>{{$i}}</td>
 										<td>{{ $softwareitem->name}}</td>
-										<td><a href="/software/{{$softwareitem->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a> <a href="/software/{{$softwareitem->id }}/eliminar" onclick="return confirm('¿Está seguro de eliminar este registro?')" class="btn btn-sm btn-danger" title="Eliminar"><i class="fa fa-trash"></i></a></td>
+										<td>
+											<a href="/software/{{$softwareitem->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a> 
+											<a href="#" data-href="/software/{{$softwareitem->id }}/eliminar" data-nombre="{{ $softwareitem->name }}"  data-toggle="modal" data-target="#confirm-delete" class="btn btn-sm btn-danger confirmar_eliminacion" title="Eliminar"><i class="fa fa-trash"></i></a>
+										</td>
 									</tr>
 									<?php $i++ ?>
 									@endforeach

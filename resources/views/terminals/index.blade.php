@@ -112,7 +112,10 @@
                                         <td>{{ $terminal->name}}</td>
                                         <td>{{ $terminal->key}}</td>
                                         <td>{{ $terminal->lastAccess}}</td>
-                                        <td><a href="/terminal/{{$terminal->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a> <a href="/terminal/{{$terminal->id }}/eliminar" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar este registro?')" title="Eliminar"><i class="fa fa-trash"></i></a> </td>
+                                        <td>
+                                            <a href="/terminal/{{$terminal->id }}" class="btn btn-sm btn-primary" title="Editar"><i class="fa fa-pencil"></i></a>
+                                            <a href="#" data-href="/terminal/{{$terminal->id }}/eliminar" data-nombre="{{ $terminal->name }}"  data-toggle="modal" data-target="#confirm-delete" class="btn btn-sm btn-danger confirmar_eliminacion" title="Eliminar"><i class="fa fa-trash"></i></a>
+                                        </td>
                                     </tr>
                                     <?php $i++ ?>
                                 @endforeach
