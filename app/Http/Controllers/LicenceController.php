@@ -76,7 +76,7 @@ class LicenceController extends Controller
 
         \Mail::send('emails.licence', $data, function($message){
             $message->from('licencias@beesys.net', 'Servicio de licenciamiento Bee');
-            $message->to('wizaguirrel@gmail.com', 'alejandra.romero@beesys.net', 'ramses.rivas@gmail.com')->subject('Nueva licencia creada');
+            $message->to('wizaguirrel@gmail.com'; 'alejandra.romero@beesys.net'; 'ramses.rivas@gmail.com')->subject('Nueva licencia creada');
         });
 
         return back()->with ('notification','La Licencia ha sido agregada con éxito');
