@@ -13,7 +13,7 @@
         <ul class="breadcrumb">
             <div class="container-fluid">
               <li class="breadcrumb-item"><a href="/dashboard">Inicio</a></li>
-              <li class="breadcrumb-item">Licencias</li>
+              <li class="breadcrumb-item"><a href="{{ route('licencias') }}">Licencias</a></li>
               <li class="breadcrumb-item active">Terminales</li>
             </div>
         </ul>
@@ -73,6 +73,7 @@
 
                                 <div class="form-group">
                                     <input type="submit" value="Guardar" class="btn btn-primary">
+                                    <a class="btn btn-info" href="/licencia/{{$licence->id}}/terminales">Regresar</a>
                                 </div>
                             </form>
                         </div>

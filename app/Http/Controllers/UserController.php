@@ -87,7 +87,6 @@ class UserController extends Controller
             'password.min' => 'La contraseña debe ser almenos de 6 caracteres.',
             'avatar.image' => 'Los formatos de imágen para el perfil son: JPG, PNG, JPEG, GIF y SVG.',
             'avatar.max' => 'El archivo de imágen de perfil excede los 2MB permitidos.'
-
         ];
 
         $this->validate($request, $rules, $messages);

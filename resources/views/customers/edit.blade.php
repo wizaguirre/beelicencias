@@ -12,7 +12,7 @@
         <ul class="breadcrumb">
         	<div class="container-fluid">
               <li class="breadcrumb-item"><a href="/dashboard">Inicio</a></li>
-              <li class="breadcrumb-item active">Clientes</li>
+              <li class="breadcrumb-item active"><a href="{{ route('clientes') }}">Clientes</a></li>
             </div>
         </ul>
         <section class="tables">   
@@ -72,6 +72,7 @@
 								</div>
 								<div class="form-group">
 									<input type="submit" value="Actualizar" class="btn btn-primary">
+									<a class="btn btn-info" href="{{route('clientes')}}">Regresar</a>
 								</div>
 							</form>
 	                    </div>

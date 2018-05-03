@@ -13,8 +13,7 @@
           <ul class="breadcrumb">
             <div class="container-fluid">
               <li class="breadcrumb-item"><a href="/dashboard">Inicio</a></li>
-              <li class="breadcrumb-item">Usuarios</li>
-              <li class="breadcrumb-item active">Editar</li>
+              <li class="breadcrumb-item active"><a href="{{ route('usuarios') }}">Usuarios</a></li>
             </div>
           </ul>
           <section class="tables">   
@@ -50,7 +49,7 @@
                       <h3 class="h4">Editar Usuario</h3>
                     </div>
                     <div class="card-body">
-                      <form action="" method="POST">
+                      <form action="" method="POST" enctype="multipart/form-data">
                       {{ csrf_field() }}
                         <div class="form-group">
                           <label class="form-control-label">Nombre</label>
@@ -75,6 +74,7 @@
                                             
                         <div class="form-group">       
                           <input type="submit" value="Actualizar" class="btn btn-primary">
+                          <a class="btn btn-info" href="{{route('usuarios')}}">Regresar</a>
                         </div>
                       </form>
                     </div>

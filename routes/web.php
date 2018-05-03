@@ -35,28 +35,28 @@ Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 //Route::get('/home', 'HomeController@index')->name('home');
 
 //USUARIOS
-Route::get('/usuarios', 'UserController@index');
+Route::get('/usuarios', 'UserController@index')->name('usuarios');
 Route::post('/usuarios', 'UserController@store');
 Route::get('/usuario/{id}', 'UserController@edit');
 Route::post('/usuario/{id}', 'UserController@update');
 Route::get('/usuario/{id}/eliminar', 'UserController@delete');
 
 //CLIENTES	
-Route::get('/clientes','CustomerController@index');
+Route::get('/clientes','CustomerController@index')->name('clientes');
 Route::post('/clientes','CustomerController@store');
 Route::post('/cliente/{id}','CustomerController@update');
 Route::get('/cliente/{id}','CustomerController@edit');
 Route::get('/cliente/{id}/eliminar','CustomerController@destroy');
 
 //SOFTWARE
-Route::get('/software','SoftwareController@index');
+Route::get('/software','SoftwareController@index')->name('software');
 Route::post('/software','SoftwareController@store');
 Route::post('/software/{id}','SoftwareController@update');
 Route::get('/software/{id}','SoftwareController@edit');
 Route::get('/software/{id}/eliminar','SoftwareController@destroy');
 
 //LICENCIAS
-Route::get('/licencias','LicenceController@index');
+Route::get('/licencias','LicenceController@index')->name('licencias');
 Route::post('/licencias','LicenceController@store');
 Route::post('/licencia/{id}','LicenceController@update');
 Route::get('/licencia/{id}','LicenceController@edit');
