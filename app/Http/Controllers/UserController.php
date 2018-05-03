@@ -62,9 +62,9 @@ class UserController extends Controller
             
             // Se guarda el archivo con el nombre compuesto en la carpeta pública
             $request->avatar->move(public_path('/uploads/avatars'), $filename);
-            $user->avatar = 'uploads/avatars/'.$filename;
+            $user->avatar = '/uploads/avatars/'.$filename;
         } else {
-            $user->avatar = 'uploads/avatars/default_avatar.jpg';
+            $user->avatar = '/uploads/avatars/default_avatar.jpg';
         }
       
     	$user->save();
